@@ -14,7 +14,9 @@
 export default {
     name: "Item",
     data() {
-        props: ["item"]
+        return {
+            props: ["item"]
+        }
     }
 }
 </script>
