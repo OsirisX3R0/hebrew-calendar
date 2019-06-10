@@ -1,32 +1,32 @@
 <template>
   <div class="ion-page">
     <ion-header>
-      <ion-toolbar color="dark">
+      <ion-toolbar color="primary">
         <ion-title>Hebrew Calendar</ion-title>
       </ion-toolbar>
     </ion-header>
 
-    <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle>{{moment(calendar.date)}}</ion-card-subtitle>
-        <ion-card-title>{{calendar.location.title}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus iusto a possimus mollitia quibusdam, itaque illum modi reprehenderit cumque sed ea aliquam beatae enim debitis. Dolor eius perspiciatis aut possimus?
-      </ion-card-content>
-    </ion-card>
+    <ion-content color="dark">
 
-    <Item />
+      <ion-text>
+        <h1>{{moment(calendar.date)}}</h1>
+        <h2>{{calendar.location.title}}</h2>
+      </ion-text>
+
+      <Items v-for="(item, index) in calendar.items" :key="index" :item="item" />
+
+    </ion-content>
   </div>
 </template>
 
 <script>
-import Item from '../components/Item';
+import Items from '../components/Items';
 import moment from 'moment';
+
 export default {
   name: 'home',
   components: {
-    Item
+    Items
   },
   data() {
     return {
@@ -34,7 +34,7 @@ export default {
     }
   },
   methods: {
-    moment: () => moment()
+    moment: (date) => moment(date).format("MMM D, YYYY h:mma")
   },
   async created() {
     const res = await fetch(`https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=on&min=off&mod=on&nx=on&year=now&month=${moment().format("M")}&ss=on&mf=on&c=on&geo=zip&zip=72117&m=50&s=on`);
@@ -42,3 +42,7 @@ export default {
   } 
 }
 </script>
+
+<style scoped>
+  
+</style>
