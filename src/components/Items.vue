@@ -44,14 +44,14 @@ export default {
 </script>
 
 <style scoped>
-  ion-card-title {
+  /* ion-card-title {
     color: ghostwhite;
-  }
+  } */
   h6 {
     margin-top: 0;
   }
-  ion-card-subtitle,
+  /* ion-card-subtitle,
   ion-card-content {
     color: #a0a0a0;
-  }
+  } */
 </style>

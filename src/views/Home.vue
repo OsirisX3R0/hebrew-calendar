@@ -1,12 +1,12 @@
 <template>
   <div class="ion-page">
     <ion-header>
-      <ion-toolbar color="primary">
+      <ion-toolbar color="dark">
         <ion-title>Hebrew Calendar</ion-title>
       </ion-toolbar>
     </ion-header>
 
-    <ion-content color="dark">
+    <ion-content>
 
       <ion-text>
         <h1>{{moment(calendar.date)}}</h1>
@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style scoped>
-  h1, h2 {
+  /* h1, h2 {
     color: ghostwhite;
-  }
+  } */
 </style>
