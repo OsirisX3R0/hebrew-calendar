@@ -6,27 +6,27 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content>
 
+    <ion-content color="light">
       <ion-text>
         <h1>{{moment(calendar.date)}}</h1>
         <h2>{{calendar.location.title}}</h2>
       </ion-text>
 
-      <Items v-for="(item, index) in calendar.items" :key="index" :item="item" />
+      <Item v-for="(item, index) in calendar.items" :key="index" :item="item" />
 
     </ion-content>
   </div>
 </template>
 
 <script>
-import Items from '../components/Items';
+import Item from '../components/Item';
 import moment from 'moment';
 
 export default {
   name: 'home',
   components: {
-    Items
+    Item
   },
   data() {
     return {
@@ -38,13 +38,14 @@ export default {
   },
   async created() {
     const res = await fetch(`https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=on&min=off&mod=on&nx=on&year=now&month=${moment().format("M")}&ss=on&mf=on&c=on&geo=zip&zip=72117&m=50&s=on`);
+    const res2 = await fetch(`https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=on&min=off&mod=on&nx=on&year=now&month=${moment().format("M")}&ss=on&mf=on&c=on&geo=zip&zip=72117&m=50&s=on`);
     this.calendar = await res.json();
   } 
 }
 </script>
 
 <style scoped>
-  /* h1, h2 {
-    color: ghostwhite;
-  } */
+  h1, h2 {
+    margin-left: 1rem;
+  }
 </style>

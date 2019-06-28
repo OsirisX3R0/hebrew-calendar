@@ -19,10 +19,18 @@
         <p v-if="item.memo"><em>{{item.memo}}</em></p>
 
         <ul v-if="item.leyning">
-          <li v-for="(passage, index) in item.leyning" :key="index">{{index}} - {{passage}}</li>
+          <li v-for="(passage, index) in item.leyning" :key="index">
+            <span v-if="index!='triennial'">{{index}} - {{passage}}</span>
+            <span v-if="index=='triennial'">
+              {{index}}:<br />
+              <ul v-for="(tri, index) in passage" :key="index">
+                <li>{{index}} - {{tri}}</li>
+              </ul>
+            </span>
+          </li>
         </ul>
 
-        <p v-if="item.link"><ion-anchor color="light" :href="link">Read More ></ion-anchor></p>
+        <!-- <p v-if="item.link"><a :href="link">Read More ></a></p> -->
       </ion-card-content>
     </ion-card>
 </template>
@@ -31,7 +39,7 @@
 import moment from 'moment';
 
 export default {
-    name: "Items",
+    name: "Item",
     props: ["item"],
     data() {
         return {
@@ -44,14 +52,7 @@ export default {
 </script>
 
 <style scoped>
-  /* ion-card-title {
-    color: ghostwhite;
-  } */
   h6 {
     margin-top: 0;
   }
-  /* ion-card-subtitle,
-  ion-card-content {
-    color: #a0a0a0;
-  } */
 </style>
