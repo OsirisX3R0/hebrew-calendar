@@ -38,7 +38,6 @@ export default {
   },
   async created() {
     const res = await fetch(`https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=on&min=off&mod=on&nx=on&year=now&month=${moment().format("M")}&ss=on&mf=on&c=on&geo=zip&zip=72117&m=50&s=on`);
-    const res2 = await fetch(`https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=on&min=off&mod=on&nx=on&year=now&month=${moment().format("M")}&ss=on&mf=on&c=on&geo=zip&zip=72117&m=50&s=on`);
     this.calendar = await res.json();
   } 
 }
