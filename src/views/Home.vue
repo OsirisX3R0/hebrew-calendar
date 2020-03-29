@@ -7,7 +7,7 @@
     </ion-header>
 
 
-    <ion-content color="light">
+    <ion-content color="light" v-if="calendar">
       <ion-text>
         <h1>{{moment(calendar.date)}}</h1>
         <h2>{{calendar.location.title}}</h2>
@@ -22,6 +22,7 @@
 <script>
 import Item from '../components/Item';
 import moment from 'moment';
+import axios from 'axios';
 
 export default {
   name: 'home',
@@ -37,8 +38,8 @@ export default {
     moment: (date) => moment(date).format("MMM D, YYYY h:mma")
   },
   async created() {
-    const res = await fetch(`https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=on&min=off&mod=on&nx=on&year=now&month=${moment().format("M")}&ss=on&mf=on&c=on&geo=zip&zip=72117&m=50&s=on`);
-    this.calendar = await res.json();
+    const res = await axios.get(`https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=on&min=off&mod=on&nx=on&year=now&month=x&ss=on&mf=on&c=on&geo=zip&zip=72117&m=50&s=on`);
+    this.calendar = await res.data;
   } 
 }
 </script>
