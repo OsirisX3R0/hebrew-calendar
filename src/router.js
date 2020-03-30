@@ -1,10 +1,12 @@
 import Vue from 'vue'
-import { IonicVueRouter } from '@ionic/vue'
-import Home from './views/Home.vue'
+//import { IonicVueRouter } from '@ionic/vue'
+import VueRouter from 'vue-router';
+import Home from './views/Home'
+import Settings from './views/Settings'
 
-Vue.use(IonicVueRouter)
+Vue.use(VueRouter)
 
-export default new IonicVueRouter({
+export default new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -12,6 +14,11 @@ export default new IonicVueRouter({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: Settings
     }
   ]
 })

@@ -1,33 +1,27 @@
 <template>
-  <div class="ion-page">
-    <ion-header>
-      <ion-toolbar color="dark">
-        <ion-title>Hebrew Calendar</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-
-    <ion-content color="light" v-if="calendar">
-      <ion-text>
+  <div>
+    <div v-if="calendar">
+      <div>
         <h1>{{moment(calendar.date)}}</h1>
         <h2>{{calendar.location.title}}</h2>
-      </ion-text>
+      </div>
 
       <Item v-for="(item, index) in calendar.items" :key="index" :item="item" />
 
-    </ion-content>
+    </div>
   </div>
 </template>
 
 <script>
 import Item from '../components/Item';
+//import Header from '../components/Header';
 import moment from 'moment';
 import axios from 'axios';
 
 export default {
   name: 'home',
   components: {
-    Item
+    Item//, Header
   },
   data() {
     return {
