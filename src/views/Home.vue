@@ -25,16 +25,44 @@ export default {
   },
   data() {
     return {
-      calendar: null
+      calendar: null,
+      settings: JSON.parse(localStorage.getItem('settings'))
     }
   },
   methods: {
     moment: (date) => moment(date).format("MMM D, YYYY h:mma")
   },
   async created() {
-    const res = await axios.get(`https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=on&min=off&mod=on&nx=on&year=now&month=x&ss=on&mf=on&c=on&geo=zip&zip=72117&m=50&s=on`);
+    //this.settings = 
+    const res = await axios.get(`https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=${this.majorHolidays}&min=${this.minorHolidays}&nx=${this.roshChodesh}&mf=${this.minorFasts}&s=${this.parashat}&c=${this.candleLighting}&o=${this.daysOfOmer}&i=${this.torahReadings}&mod=on&&year=now&month=x&ss=on&&geo=zip&zip=72117&m=50&`);
     this.calendar = await res.data;
-  } 
+  },
+  computed: {
+    majorHolidays: function() {
+      return this.settings.majorHolidays ? 'on' : 'off';
+    },
+    minorHolidays: function() {
+      return this.settings.minorHolidays ? 'on' : 'off';
+    },
+    roshChodesh: function() {
+      return this.settings.roshChodesh ? 'on' : 'off';
+    },
+    minorFasts: function() {
+      return this.settings.minorFasts ? 'on' : 'off';
+    },
+    parashat: function() {
+      return this.settings.parashat ? 'on' : 'off';
+    },
+    candleLighting: function() {
+      return this.settings.candleLighting ? 'on' : 'off';
+    },
+    daysOfOmer: function() {
+      return this.settings.daysOfOmer ? 'on' : 'off';
+    },
+    torahReadings: function() {
+      return this.settings.torahReadings ? 'on' : 'off';
+    }
+  }
 }
 </script>
 

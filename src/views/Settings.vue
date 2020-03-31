@@ -29,6 +29,20 @@
             </label>
         </li>
         <li>
+            Special Shabbatot 
+            <label class="toggle">
+                <input type="checkbox" name="specialShabbatot" v-model="settings.specialShabbatot" />
+                <span></span>
+            </label>
+        </li>
+        <li>
+            Modern holidays
+            <label class="toggle">
+                <input type="checkbox" name="modernHolidays" v-model="settings.modernHolidays" />
+                <span></span>
+            </label>
+        </li>
+        <li>
             Parashat ha-Shavuah on Saturday
             <label class="toggle">
                 <input type="checkbox" name="parashat" v-model="settings.parashat" />
@@ -69,6 +83,8 @@ export default {
                 minorHolidays: false,
                 roshChodesh: false,
                 minorFasts: false,
+                specialShabbatot: false,
+                modernHolidays: false,
                 parashat: false,
                 candleLighting: false,
                 daysOfOmer: false,
@@ -91,7 +107,15 @@ export default {
             this.updateSettings(settings);
         },
         "settings.minorFasts": function(val) {
-            var settings = { ...this.settings, minominorFastsrHolidays: val}
+            var settings = { ...this.settings, minorFasts: val}
+            this.updateSettings(settings);
+        },
+        "settings.specialShabbatot": function(val) {
+            var settings = { ...this.settings, specialShabbatot: val}
+            this.updateSettings(settings);
+        },
+        "settings.modernHolidays": function(val) {
+            var settings = { ...this.settings, modernHolidays: val}
             this.updateSettings(settings);
         },
         "settings.parashat": function(val) {
@@ -111,12 +135,6 @@ export default {
             this.updateSettings(settings);
         }
     },
-    // computed: {
-    //     settings: function() {
-    //         var value = localStorage.getItem('settings');
-    //         return value ? value : this.defaultSettings ;
-    //     }
-    // },
     created: function() {
         var value = JSON.parse(localStorage.getItem('settings'));
         this.settings = !value || value == "null" ? this.defaultSettings :  value;
