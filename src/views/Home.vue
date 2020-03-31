@@ -37,28 +37,28 @@ export default {
   },
   computed: {
     majorHolidays: function() {
-      return this.settings.majorHolidays ? 'on' : 'off';
+      return this.settings && this.settings.majorHolidays ? 'on' : 'off';
     },
     minorHolidays: function() {
-      return this.settings.minorHolidays ? 'on' : 'off';
+      return this.settings && this.settings.minorHolidays ? 'on' : 'off';
     },
     roshChodesh: function() {
-      return this.settings.roshChodesh ? 'on' : 'off';
+      return this.settings && this.settings.roshChodesh ? 'on' : 'off';
     },
     minorFasts: function() {
-      return this.settings.minorFasts ? 'on' : 'off';
+      return this.settings && this.settings.minorFasts ? 'on' : 'off';
     },
     parashat: function() {
-      return this.settings.parashat ? 'on' : 'off';
+      return this.settings && this.settings.parashat ? 'on' : 'off';
     },
     candleLighting: function() {
-      return this.settings.candleLighting ? 'on' : 'off';
+      return this.settings && this.settings.candleLighting ? 'on' : 'off';
     },
     daysOfOmer: function() {
-      return this.settings.daysOfOmer ? 'on' : 'off';
+      return this.settings && this.settings.daysOfOmer ? 'on' : 'off';
     },
     torahReadings: function() {
-      return this.settings.torahReadings ? 'on' : 'off';
+      return this.settings && this.settings.torahReadings ? 'on' : 'off';
     }
   }
 }
