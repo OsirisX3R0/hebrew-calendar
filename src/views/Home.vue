@@ -14,14 +14,13 @@
 
 <script>
 import Item from '../components/Item';
-//import Header from '../components/Header';
 import moment from 'moment';
 import axios from 'axios';
 
 export default {
   name: 'home',
   components: {
-    Item//, Header
+    Item
   },
   data() {
     return {
@@ -33,7 +32,6 @@ export default {
     moment: (date) => moment(date).format("MMM D, YYYY h:mma")
   },
   async created() {
-    //this.settings = 
     const res = await axios.get(`https://www.hebcal.com/hebcal/?v=1&cfg=json&maj=${this.majorHolidays}&min=${this.minorHolidays}&nx=${this.roshChodesh}&mf=${this.minorFasts}&s=${this.parashat}&c=${this.candleLighting}&o=${this.daysOfOmer}&i=${this.torahReadings}&mod=on&&year=now&month=x&ss=on&&geo=zip&zip=72117&m=50&`);
     this.calendar = await res.data;
   },
